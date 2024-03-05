@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-dark fs-5 bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/profile']"><img src="assets/images/logo.png" width="100"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item" *ngIf="IsLogin() && !IsAdmin()">
+                    <a class="nav-link" aria-current="page" [routerLink]="['/profile']" [routerLinkActive]="'active'"><i
+                            class="bi bi-person-lines-fill"></i>Profile</a>
+                </li>
+                <li class="nav-item" *ngIf="IsLogin() && IsAdmin()">
+                    <a class="nav-link" [routerLink]="['/employees']" [routerLinkActive]="'active'"
+                        [routerLinkActiveOptions]="{ exact: true }">Employees</a>
+                </li>
+                <li class="nav-item " *ngIf="IsLogin() && IsAdmin()">
+                    <a class="nav-link" [routerLink]="['/employees', 'add']" [routerLinkActive]="'active'"
+                        [routerLinkActiveOptions]="{ exact: true }">Add Employee</a>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item" *ngIf="!IsLogin()">
+                    <a class="nav-link" [routerLink]="['/login']" [routerLinkActiveOptions]="{ exact: true }"
+                        [routerLinkActive]="'active'"><i class="bi bi-box-arrow-in-right"></i>Login</a>
+                </li>
+                <li class="nav-item" *ngIf="IsLogin()">
+                    <a class="nav-link" (click)="logout()" style="cursor: pointer;">
+                        <i class="bi bi-box-arrow-in-left"></i>
+                        Logout
+                        <span *ngIf="currentLogin!=undefined">:{{currentLogin[0].username}}</span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>

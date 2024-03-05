@@ -1,0 +1,39 @@
+<form [formGroup]="myForm" class="w-25 m-auto text-center mt-5" (submit)="onSubmit($event)">
+  <img class="mb-4" src="assets/images/logo.png" alt="" width="72" height="57">
+  <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+  <div class="form-floating mb-2">
+    <input formControlName="username" type="text" class="form-control" id="floatingInput" placeholder="Username"
+      [ngClass]="{
+        'is-invalid': usernameControl?.errors && usernameControl?.touched
+      }" />
+    <label for="floatingInput">User Name</label>
+    <div class="invalid-feedback">
+      <ng-container *ngIf="usernameControl?.hasError('required')">
+        User Name is required
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="form-floating mb-2">
+    <input type="password" formControlName="password" class="form-control" id="floatingPassword" placeholder="Password"
+      [ngClass]="{
+        'is-invalid': passwordControl?.errors && passwordControl?.touched
+      }" />
+    <label for="floatingPassword">Password</label>
+    <div class="invalid-feedback">
+      <ng-container *ngIf="passwordControl?.hasError('required')">
+        Password is required
+      </ng-container>
+    </div>
+  </div>
+  <ng-container *ngIf="flag ">
+    <div class="text-danger">
+      Username or Password is incorrect
+    </div>
+  </ng-container>
+
+
+  <button [disabled]="!myForm.valid" class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+
+</form>

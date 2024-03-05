@@ -1,0 +1,36 @@
+<form [formGroup]="myForm" class=" w-50 m-auto mt-4" (submit)="onSubmit($event)">
+    <h1 class="text-center text-primary h1 fs-1">Create Account for {{id}}</h1>
+    <div>
+        <label  for="username" class="form-label fs-5 fw-bold">Username:</label>
+        <input formControlName="username"  type="text" class="form-control" id="username" required
+            [ngClass]="{
+          'is-valid': usernameControl?.valid,
+          'is-invalid': usernameControl?.errors && usernameControl?.touched
+        }" />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+            <ng-container *ngIf="usernameControl?.hasError('required')">
+                Username is required
+            </ng-container>
+        </div>
+    </div>
+    <div >
+        <label for="password" class="form-label fs-5 fw-bold">Password:</label>
+        <input formControlName="password" type="text" class="form-control" id="password" required
+            [ngClass]="{
+          'is-valid': passwordControl?.valid,
+          'is-invalid': passwordControl?.errors && passwordControl?.touched
+        }" />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+            <ng-container *ngIf="passwordControl?.hasError('required')">
+                Password is required
+            </ng-container>
+            
+        </div>
+    </div>
+    
+    <div class="text-center mt-2">
+        <button [disabled]="!myForm.valid"  class="btn btn-primary fs-5 fw-bold" type="submit">Submit</button>
+    </div>
+  </form>

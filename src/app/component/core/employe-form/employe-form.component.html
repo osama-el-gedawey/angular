@@ -1,0 +1,77 @@
+
+
+<form [formGroup]="myForm" class=" w-50 m-auto mt-4" (submit)="onSubmit($event)">
+    <h1 class="text-center text-primary h1 fs-1">Add/Edit Employee</h1>
+    <div>
+        <label  for="name" class="form-label fs-5 fw-bold">Name:</label>
+        <input formControlName="name"  type="text" class="form-control" id="name" required
+            [ngClass]="{
+          'is-valid': nameControl?.valid,
+          'is-invalid': nameControl?.errors && nameControl?.touched
+        }" />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+            <ng-container *ngIf="nameControl?.hasError('required')">
+                Name is required
+            </ng-container>
+            <ng-container *ngIf="nameControl?.hasError('minlength')">
+                Name must be at least 4 characters
+            </ng-container>
+        </div>
+    </div>
+    <div >
+        <label for="adress" class="form-label fs-5 fw-bold">Adress:</label>
+        <input formControlName="adress" type="text" class="form-control" id="adress" required
+            [ngClass]="{
+          'is-valid': adressControl?.valid,
+          'is-invalid': adressControl?.errors && adressControl?.touched
+        }" />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+            <ng-container *ngIf="adressControl?.hasError('required')">
+                Adress is required
+            </ng-container>
+            <ng-container *ngIf="adressControl?.hasError('pattern')">
+                Adress must be alex or cairo
+            </ng-container>
+        </div>
+    </div>
+    <div >
+        <label for="age" class="form-label fs-5 fw-bold">Age:</label>
+        <input formControlName="age" type="number" class="form-control" id="age" required
+            [ngClass]="{
+          'is-valid': ageControl?.valid,
+          'is-invalid': ageControl?.errors && ageControl?.touched
+        }" />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+            <ng-container *ngIf="ageControl?.hasError('required')">
+                Age is required
+            </ng-container>
+            <ng-container *ngIf="ageControl?.hasError('min') ||ageControl?.hasError('max')">
+                Age must be between 25 and 60
+            </ng-container>
+        </div>
+    </div>
+    <div >
+        <label for="salary" class="form-label fs-5 fw-bold">Salary:</label>
+        <input formControlName="salary" type="number" class="form-control" id="salary" required
+            [ngClass]="{
+          'is-valid': salaryControl?.valid,
+          'is-invalid': salaryControl?.errors && salaryControl?.touched
+        }" />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+            <ng-container *ngIf="salaryControl?.hasError('required')">
+                Salary is required
+            </ng-container>
+            <ng-container *ngIf="salaryControl?.hasError('min') ||salaryControl?.hasError('max')">
+                Salary must be between 6000 and 100000
+            </ng-container>
+        </div>
+    </div>
+    <div class="text-center mt-2">
+        <button [disabled]="!myForm.valid"  class="btn btn-primary fs-5 fw-bold" type="submit">Submit</button>
+    </div>
+  </form>
+  

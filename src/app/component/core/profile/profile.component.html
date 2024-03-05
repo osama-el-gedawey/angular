@@ -1,0 +1,16 @@
+<div class="row justify-content-center fw-bold mt-4">
+    <div class="col-12 col-md-6 col-lg-4">
+        <ng-container *ngIf="currentEmployee!=undefined else notexist">
+            <img src="assets/images/profile.png" class="rounded-circle img-fluid mx-auto d-block w-75">
+            <br/>
+            <h2 class="fw-normal">Name: {{currentEmployee.name}}</h2>
+            <h2 class="fw-normal">Adress: {{currentEmployee.adress}}</h2>
+            <h2 class="fw-normal">Age: {{currentEmployee.age}}</h2>
+            <h2 class="fw-normal">Salary: {{currentEmployee.salary|currency}}</h2>
+        </ng-container>
+        <ng-template #notexist>
+            <h2 class="text-danger text-center">Not Exist or Admin Account</h2>
+        </ng-template>
+
+    </div>
+</div>
