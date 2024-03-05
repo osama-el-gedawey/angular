@@ -1,0 +1,43 @@
+{
+  "emoloyes": [
+    {
+      "name": "osama",
+      "adress": "cairo",
+      "age": 37,
+      "salary": 10000,
+      "hasAccount": true,
+      "id": "284f"
+    },
+    {
+      "id": "1c27",
+      "name": "hassan",
+      "adress": "alex",
+      "age": 36,
+      "salary": 20000,
+      "hasAccount": true
+    }
+  ],
+  "accounts": [
+    {
+      "id": "rrr",
+      "username": "admin",
+      "password": "1",
+      "role": "admin",
+      "empId": "ttttt"
+    },
+    {
+      "id": "72ed",
+      "username": "emp2",
+      "password": "1",
+      "empId": "284f",
+      "role": "employee"
+    },
+    {
+      "id": "a83f",
+      "username": "emp1",
+      "password": "1",
+      "empId": "1c27",
+      "role": "employee"
+    }
+  ]
+}
