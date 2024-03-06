@@ -21,7 +21,9 @@
         <td>{{ emp.age }}</td>
         <td>{{ emp.salary | currency }}</td>
         <ng-container *ngIf="emp.hasAccount else notCreated">
-          <td><i class="bi bi-check-circle-fill fs-4 text-success"></i></td>
+          <td><i class="bi bi-check-circle-fill fs-4 text-success"></i>
+          <a (click)="getAccInfo(emp.id)" style="cursor: pointer;">
+              <i class="bi bi-info-circle-fill ms-2 fs-4 text-success cursor-pointer"></i></a></td>
         </ng-container>
         <ng-template #notCreated>
           <td><a [routerLink]="['/account/add', emp.id]" style="cursor: pointer;"><i
