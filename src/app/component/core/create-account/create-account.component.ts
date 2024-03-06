@@ -66,8 +66,9 @@ export class CreateAccountComponent implements OnInit, OnDestroy {
       this.myForm.controls['empId'].setValue(this.id);
       this.actionSubscribe = this.accService.Add(this.myForm.value).subscribe();
       this.currentEmployee.hasAccount=true;
-      this.getSubscribe = this.empService.Edit(this.currentEmployee.id,this.currentEmployee).subscribe()
-      this.myRouter.navigate(['/employees']);
+      this.getSubscribe = this.empService.Edit(this.currentEmployee.id,this.currentEmployee).subscribe(
+        ()=>{this.myRouter.navigate(['/employees']);}
+      )
     }
   }
 }
