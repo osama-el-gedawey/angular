@@ -38,6 +38,14 @@ export class EmployeListComponent implements OnDestroy,OnInit {
         }
       }
     })
-    
+  }
+  getAccInfo(id:string){
+    this.deleteAccSubscribe=this.accService.getByEmpId(id).subscribe({
+      next:(data)=>{
+        if(data.length!=0){
+          alert(`username: ${data[0].username}\n password: ${data[0].password}`)
+        }
+      }
+    })
   }
 }
